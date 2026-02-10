@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   setorf-ui-app:
-    build: .
+    image: ${DOCKER_IMAGE:-setorf-ui:latest}
     container_name: setorf-ui-app
     ports:
       - "8089:80"
