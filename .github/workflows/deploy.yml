@@ -2,7 +2,7 @@ name: Build and Deploy Setorf-UI
 
 on:
   push:
-    branches: [main]
+    branches: [production]
 
 jobs:
   build-and-deploy:
