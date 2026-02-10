@@ -49,9 +49,6 @@ jobs:
             # Ensure docker network exists
             docker network create nginx-proxy-network 2>/dev/null || true
 
-            # Copy nginx proxy config
-            cp /opt/setorf-ui/nginx-proxy-config/setorf.conf /opt/nginx-proxy/conf.d/setorf.conf 2>/dev/null || true
-
             # Deploy container
             cd /opt/setorf-ui
             export DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/setorf-ui:latest
@@ -59,8 +56,18 @@ jobs:
             docker compose pull
             docker compose up -d
 
-            # Reload nginx-proxy if running
-            docker exec nginx-proxy nginx -s reload 2>/dev/null || true
+            # Connect container to nginx-proxy network
+            docker network connect nginx-proxy-network setorf-ui-app 2>/dev/null || true
+            docker network connect nginx-proxy-network nginx-proxy 2>/dev/null || true
+
+            # Find nginx-proxy conf.d path and copy config
+            NGINX_CONF_DIR=$(docker inspect nginx-proxy --format='{{ range .Mounts }}{{ if eq .Destination "/etc/nginx/conf.d" }}{{ .Source }}{{ end }}{{ end }}' 2>/dev/null)
+            if [ -n "$NGINX_CONF_DIR" ]; then
+              cp /opt/setorf-ui/nginx-proxy-config/setorf.conf "$NGINX_CONF_DIR/setorf.conf"
+            fi
+
+            # Reload nginx-proxy
+            docker exec nginx-proxy nginx -t && docker exec nginx-proxy nginx -s reload
 
             # Cleanup
             docker image prune -f
