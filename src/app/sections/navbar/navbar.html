@@ -1,0 +1,89 @@
+<nav
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-500"
+  [class.bg-white]="isScrolled"
+  [class.shadow-lg]="isScrolled"
+  [class.bg-transparent]="!isScrolled"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-1" (click)="closeMobileMenu()">
+        <span class="text-3xl font-black tracking-tight transition-colors duration-300"
+          [class.text-white]="!isScrolled"
+          [class.text-amber-900]="isScrolled"
+          style="font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">
+          SETORF
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        @for (link of navLinks; track link.href) {
+          <a
+            [href]="link.href"
+            class="text-sm font-medium tracking-wide hover:opacity-70 transition-all duration-300"
+            [class.text-white]="!isScrolled"
+            [class.text-gray-700]="isScrolled"
+          >
+            {{ link.label }}
+          </a>
+        }
+        <a
+          href="https://wa.me/905330944571"
+          target="_blank"
+          rel="noopener"
+          class="bg-amber-800 hover:bg-amber-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105"
+        >
+          WhatsApp
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        class="md:hidden flex flex-col gap-1.5 p-2"
+        (click)="toggleMobileMenu()"
+        [attr.aria-label]="isMobileMenuOpen ? 'Menuyu kapat' : 'Menuyu ac'"
+      >
+        <span class="w-6 h-0.5 transition-all duration-300"
+          [class.bg-white]="!isScrolled"
+          [class.bg-gray-800]="isScrolled"
+          [class.rotate-45]="isMobileMenuOpen"
+          [class.translate-y-2]="isMobileMenuOpen"></span>
+        <span class="w-6 h-0.5 transition-all duration-300"
+          [class.bg-white]="!isScrolled"
+          [class.bg-gray-800]="isScrolled"
+          [class.opacity-0]="isMobileMenuOpen"></span>
+        <span class="w-6 h-0.5 transition-all duration-300"
+          [class.bg-white]="!isScrolled"
+          [class.bg-gray-800]="isScrolled"
+          [class.-rotate-45]="isMobileMenuOpen"
+          [class.-translate-y-2]="isMobileMenuOpen"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMobileMenuOpen) {
+    <div class="md:hidden bg-white shadow-xl border-t">
+      <div class="px-4 py-6 flex flex-col gap-4">
+        @for (link of navLinks; track link.href) {
+          <a
+            [href]="link.href"
+            class="text-gray-700 hover:text-amber-800 text-lg font-medium py-2"
+            (click)="closeMobileMenu()"
+          >
+            {{ link.label }}
+          </a>
+        }
+        <a
+          href="https://wa.me/905330944571"
+          target="_blank"
+          rel="noopener"
+          class="bg-amber-800 hover:bg-amber-900 text-white text-center font-semibold px-5 py-3 rounded-full transition-all duration-300 mt-2"
+        >
+          WhatsApp ile Ulasin
+        </a>
+      </div>
+    </div>
+  }
+</nav>

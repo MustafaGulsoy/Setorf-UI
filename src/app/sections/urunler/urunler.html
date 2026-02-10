@@ -1,0 +1,40 @@
+<section id="urunler" class="py-20 md:py-28 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16" appScrollAnimate="fade-up">
+      <span class="text-amber-700 font-semibold text-sm uppercase tracking-widest mb-4 block">Urun Kategorilerimiz</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Genis Urun <span class="text-amber-800">Yelpazemiz</span>
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        Profesyonel torf toprak urunleri ve bahcecilik malzemeleri tek adreste.
+      </p>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (category of categories; track category.title; let i = $index) {
+        <div
+          appScrollAnimate="fade-up"
+          [animationDelay]="i * 150"
+          class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              [src]="category.image"
+              [alt]="category.title"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <span class="absolute top-4 right-4 text-3xl">{{ category.icon }}</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{{ category.title }}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{{ category.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

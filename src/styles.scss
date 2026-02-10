@@ -1,0 +1,114 @@
+@use "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-primary-50: #fdf8f4;
+  --color-primary-100: #f9ede2;
+  --color-primary-200: #f0d5be;
+  --color-primary-300: #e5b892;
+  --color-primary-400: #d49561;
+  --color-primary-500: #8B5E3C;
+  --color-primary-600: #7a5235;
+  --color-primary-700: #63422b;
+  --color-primary-800: #4d3321;
+  --color-primary-900: #3a261a;
+
+  --color-accent-50: #f0f9f4;
+  --color-accent-100: #daf2e4;
+  --color-accent-200: #b7e4cc;
+  --color-accent-300: #87d0ab;
+  --color-accent-400: #4a9e5c;
+  --color-accent-500: #2d7a3e;
+  --color-accent-600: #236330;
+  --color-accent-700: #1c4f27;
+  --color-accent-800: #173d1e;
+  --color-accent-900: #132d17;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #2c3e50;
+  background-color: #fdfbf8;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B5E3C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #63422b;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: #3a261a;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== Scroll Animation Classes ========== */
+.scroll-hidden {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-hidden.scroll-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+.animate-fade-up {
+  transform: translateY(40px);
+}
+
+.animate-fade-down {
+  transform: translateY(-40px);
+}
+
+.animate-fade-left {
+  transform: translateX(-40px);
+}
+
+.animate-fade-right {
+  transform: translateX(40px);
+}
+
+.animate-scale-up {
+  transform: scale(0.85);
+}
+
+.animate-zoom-in {
+  transform: scale(0.9);
+}
