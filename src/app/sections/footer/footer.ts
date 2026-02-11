@@ -11,14 +11,14 @@ export class FooterComponent {
 
   navLinks = [
     { label: 'Ana Sayfa', href: '#hero' },
-    { label: 'Hakkimizda', href: '#hakkimizda' },
-    { label: 'Urunler', href: '#urunler' },
+    { label: 'Hakkımızda', href: '#hakkimizda' },
+    { label: 'Ürünler', href: '#urunler' },
     { label: 'Galeri', href: '#galeri' },
-    { label: 'Iletisim', href: '#iletisim' },
+    { label: 'İletişim', href: '#iletisim' },
   ];
 
   products = [
-    'Torf', 'Bahce Topragi', 'Saksi Topragi',
-    'Gubre', 'Perlit', 'Profesyonel Karisim',
+    'Torf', 'Bahçe Toprağı', 'Saksı Toprağı',
+    'Gübre', 'Perlit', 'Profesyonel Karışım',
   ];
 }

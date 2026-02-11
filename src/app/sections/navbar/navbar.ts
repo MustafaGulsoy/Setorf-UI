@@ -14,11 +14,11 @@ export class NavbarComponent {
 
   navLinks = [
     { label: 'Ana Sayfa', href: '#hero' },
-    { label: 'Hakkimizda', href: '#hakkimizda' },
-    { label: 'Urunler', href: '#urunler' },
+    { label: 'Hakkımızda', href: '#hakkimizda' },
+    { label: 'Ürünler', href: '#urunler' },
     { label: 'Neden Biz', href: '#neden-biz' },
     { label: 'Galeri', href: '#galeri' },
-    { label: 'Iletisim', href: '#iletisim' },
+    { label: 'İletişim', href: '#iletisim' },
   ];
 
   @HostListener('window:scroll')
