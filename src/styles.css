@@ -26,88 +26,67 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: #2c3e50;
+    background-color: #fdfbf8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8B5E3C;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #63422b;
+  }
 }
 
-body {
-  font-family: var(--font-sans);
-  color: #2c3e50;
-  background-color: #fdfbf8;
-  line-height: 1.6;
-}
+@layer components {
+  .scroll-hidden {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  .scroll-hidden.scroll-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) !important;
+  }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+  .animate-fade-up {
+    transform: translateY(40px);
+  }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+  .animate-fade-down {
+    transform: translateY(-40px);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #8B5E3C;
-  border-radius: 5px;
-}
+  .animate-fade-left {
+    transform: translateX(-40px);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #63422b;
-}
+  .animate-fade-right {
+    transform: translateX(40px);
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-  color: #3a261a;
-}
+  .animate-scale-up {
+    transform: scale(0.85);
+  }
 
-a {
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========== Scroll Animation Classes ========== */
-.scroll-hidden {
-  opacity: 0;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-hidden.scroll-visible {
-  opacity: 1;
-  transform: translate(0, 0) scale(1) !important;
-}
-
-.animate-fade-up {
-  transform: translateY(40px);
-}
-
-.animate-fade-down {
-  transform: translateY(-40px);
-}
-
-.animate-fade-left {
-  transform: translateX(-40px);
-}
-
-.animate-fade-right {
-  transform: translateX(40px);
-}
-
-.animate-scale-up {
-  transform: scale(0.85);
-}
-
-.animate-zoom-in {
-  transform: scale(0.9);
+  .animate-zoom-in {
+    transform: scale(0.9);
+  }
 }
